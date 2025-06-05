@@ -1,12 +1,17 @@
-<% content_for :title, "Editing user" %>
+<h1>Edit Profile</h1>
 
-<h1>Editing user</h1>
+<%= form_with model: @user, local: true do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
 
-<%= render "form", user: @user %>
+  <div>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
 
-<br>
+  <%= f.submit "Update" %>
+<% end %>
 
-<div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
-</div>
+<%= link_to "Back to Profile", user_path(@user) %>

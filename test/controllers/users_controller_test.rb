@@ -15,19 +15,21 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
- test "should create user" do
+test "should create user" do
   assert_difference("User.count") do
     post users_url, params: {
       user: {
         name: "Test User",
-        email: "unique_user@example.com",  # Must be unique
-        password_digest: "securepassword123"
+        email: "unique_user@example.com",  # Must be unique in test DB
+        password: "securepassword123",
+        password_confirmation: "securepassword123"
       }
     }
   end
 
   assert_redirected_to user_url(User.last)
 end
+
 
 
   test "should show user" do
@@ -44,8 +46,9 @@ test "should update user" do
   patch user_url(@user), params: {
     user: {
       name: "Updated Name",
-      email: "updated_email@example.com",  # Make sure it's different if your test db enforces uniqueness
-      password_digest: "newsecurepassword"
+      email: "updated_email@example.com",
+      password: "newsecurepassword",
+      password_confirmation: "newsecurepassword"
     }
   }
 
@@ -53,6 +56,7 @@ test "should update user" do
   @user.reload
   assert_equal "Updated Name", @user.name
 end
+
 
 
   test "should destroy user" do
