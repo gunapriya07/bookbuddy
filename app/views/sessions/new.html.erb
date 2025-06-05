@@ -1,5 +1,9 @@
 <h1>Log In</h1>
 
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
 <%= form_with url: login_path, local: true do |f| %>
   <div>
     <%= label_tag :email %><br>
