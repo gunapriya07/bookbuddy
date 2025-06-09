@@ -2,19 +2,8 @@ require "test_helper"
 
 class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.create!(
-      name: "Test User",
-      email: "testuser@example.com",
-      password: "password",
-      password_confirmation: "password"
-    )
-  @book = Book.create!(
-    title: "Sample Book",
-    author: "Author",
-    genre: "Genre",
-    notes: "Notes here",
-    user: @user
-  )
+    @user = users(:one)
+    @book = books(:one)
     sign_in_as(@user)
   end
 

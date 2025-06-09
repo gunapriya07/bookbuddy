@@ -1,0 +1,9 @@
+one:
+  rating: 5
+  comment: "Excellent book!"
+  book: one
+
+two:
+  rating: 3
+  comment: "It was okay"
+  book: one
