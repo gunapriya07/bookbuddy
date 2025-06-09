@@ -12,11 +12,9 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     def sign_in_as(user)
-      post login_url, params: { email: user.email, password: "password" }
-      # or directly set session if you want:
-      # open_session do |sess|
-      #   sess.cookies[:user_id] = user.id
-      # end
+      post login_url, params: { email: user.email, password: "password123" }
+      assert_response :redirect
+      follow_redirect!
     end
   end
 end

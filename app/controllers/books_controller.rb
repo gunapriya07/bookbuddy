@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
+    @book = Book.find(params[:id])
   end
 
   # GET /books/new

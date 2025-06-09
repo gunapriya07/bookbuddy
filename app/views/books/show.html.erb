@@ -5,6 +5,29 @@
 <div>
   <%= link_to "Edit this book", edit_book_path(@book) %> |
   <%= link_to "Back to books", books_path %>
+  <h3>Reviews</h3>
+<% @book.reviews.each do |review| %>
+  <p><strong>Rating:</strong> <%= review.rating %></p>
+  <p><strong>Comment:</strong> <%= review.comment %></p>
+  <hr>
+<% end %>
+
+<h4>Add a Review</h4>
+<%= form_with(model: [@book, @book.reviews.build]) do |f| %>
+  <div>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit Review" %>
+  </div>
+<% end %>
 
   <%= button_to "Destroy this book", @book, method: :delete %>
 </div>
