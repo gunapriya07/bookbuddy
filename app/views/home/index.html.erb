@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>📖 Welcome to Book Buddy</h1>
+  <p>Your personal library to track, review, and manage your books.</p>
+
+  <% if session[:user_id] %>
+    <%= link_to "Go to My Books", books_path, class: "btn" %>
+  <% end %>
+</div>
