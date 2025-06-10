@@ -1,24 +1,77 @@
-# README
+# 📚 BookBuddy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BookBuddy is a personal book tracking app where users can register, log in, and manage a collection of books with reviews. Built with Ruby on Rails, it supports user authentication, book management, and nested reviews.
 
-Things you may want to cover:
+## 🚀 Live Demo
 
-* Ruby version
+👉 [BookBuddy on Render](https://bookbuddy-koew.onrender.com/)
 
-* System dependencies
+---
 
-* Configuration
+## 🛠️ Features
 
-* Database creation
+- User Sign-Up / Login / Logout (with sessions)
+- Authenticated access to user-specific books
+- CRUD operations for books
+- Nested reviews (each book can have many reviews)
+- Flash messages for user feedback
+- Validations for clean data
+- Responsive Navbar with navigation
+- Deployed on Render
 
-* Database initialization
+---
 
-* How to run the test suite
+<!-- ## 📷 Screenshots
 
-* Services (job queues, cache servers, search engines, etc.)
+> _Add screenshots of your app here (e.g., homepage, login screen, book form, etc.)_
 
-* Deployment instructions
+--- -->
 
-* ...
+## 🧱 Models
+
+### User
+
+- `name`
+- `email`
+- `password_digest`
+
+### Book
+
+- `title`
+- `author`
+- `genre`
+- `notes`
+- `user_id`
+
+### Review
+
+- `rating`
+- `comment`
+- `book_id`
+
+---
+
+## 🔐 Authentication
+
+- Handled using `bcrypt` gem.
+- Sessions controller handles login/logout.
+- Only logged-in users can access and manage their own books.
+
+---
+
+## 🧪 Validations
+
+- Email and name presence validation for users
+- Title and author presence for books
+- Rating validation for reviews (1–5)
+
+---
+
+## 📦 Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/bookbuddy.git
+cd bookbuddy
+```
