@@ -1,7 +1,7 @@
-<%= form_with(model: [@book, @review]) do |form| %>
+<%= form_with(model: [@book, @review], class: "card p-4 shadow-sm") do |form| %>
   <% if @review.errors.any? %>
-    <div style="color: red;">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h5>
       <ul>
         <% @review.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,17 +10,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :rating, style: "display: block;" %>
-    <%= form.number_field :rating %>
+  <div class="mb-3">
+    <%= form.label :rating, class: "form-label" %>
+    <%= form.number_field :rating, class: "form-control", min: 1, max: 5 %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :comment, class: "form-label" %>
+    <%= form.text_area :comment, class: "form-control", rows: 4 %>
   </div>
 
   <div>
-    <%= form.label :comment, style: "display: block;" %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Submit Review", class: "btn btn-primary" %>
   </div>
 <% end %>

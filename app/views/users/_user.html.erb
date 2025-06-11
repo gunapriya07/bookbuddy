@@ -1,17 +1,12 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-
-  <p>
+<div id="<%= dom_id user %>" class="card p-3 shadow-sm">
+  <h5 class="card-title text-primary">👤 <%= user.name %></h5>
+  <p class="card-text mb-1">
     <strong>Email:</strong>
     <%= user.email %>
   </p>
 
-  <p>
-    <strong>Password digest:</strong>
-    <%= user.password_digest %>
+  <p class="card-text text-muted mb-0">
+    <strong>Password Digest:</strong>
+    <code><%= user.password_digest.truncate(25) %></code>
   </p>
-
 </div>
