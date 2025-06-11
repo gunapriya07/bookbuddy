@@ -1,16 +1,25 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Books" %>
 
-<h1>Books</h1>
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
 
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
-  <% end %>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">📚 All Books</h2>
+    <%= link_to "➕ New Book", new_book_path, class: "btn btn-primary" %>
+  </div>
+
+  <div id="books" class="row row-cols-1 row-cols-md-2 g-4">
+    <% @books.each do |book| %>
+      <div class="col">
+        <%= render book %>
+        <div class="mt-2">
+          <%= link_to "🔍 Show this Book", book, class: "btn btn-outline-secondary btn-sm" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New book", new_book_path %>

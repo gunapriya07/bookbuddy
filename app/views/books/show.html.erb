@@ -1,33 +1,54 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @book %>
-
-<div>
-  <%= link_to "Edit this book", edit_book_path(@book) %> |
-  <%= link_to "Back to books", books_path %>
-  <h3>Reviews</h3>
-<% @book.reviews.each do |review| %>
-  <p><strong>Rating:</strong> <%= review.rating %></p>
-  <p><strong>Comment:</strong> <%= review.comment %></p>
-  <hr>
-<% end %>
-
-<h4>Add a Review</h4>
-<%= form_with(model: [@book, @book.reviews.build]) do |f| %>
-  <div>
-    <%= f.label :rating %>
-    <%= f.number_field :rating %>
-  </div>
-
-  <div>
-    <%= f.label :comment %>
-    <%= f.text_area :comment %>
-  </div>
-
-  <div>
-    <%= f.submit "Submit Review" %>
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
   </div>
 <% end %>
 
-  <%= button_to "Destroy this book", @book, method: :delete %>
+<div class="container mt-5">
+  <%= render @book %>
+
+  <div class="mt-3">
+    <%= link_to "✏️ Edit this Book", edit_book_path(@book), class: "btn btn-outline-primary me-2" %>
+    <%= link_to "⬅️ Back to Books", books_path, class: "btn btn-outline-dark" %>
+  </div>
+
+  <hr class="my-4">
+
+  <div class="mt-4">
+    <h3 class="text-secondary">⭐ Reviews</h3>
+    
+    <% if @book.reviews.any? %>
+      <% @book.reviews.each do |review| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="card-text"><strong>Rating:</strong> <%= review.rating %>/5</p>
+            <p class="card-text"><strong>Comment:</strong> <%= review.comment %></p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted">No reviews yet.</p>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <h4 class="text-success">✍️ Add a Review</h4>
+    <%= form_with(model: [@book, @book.reviews.build], class: "card p-4 shadow-sm") do |f| %>
+      <div class="mb-3">
+        <%= f.label :rating, class: "form-label" %>
+        <%= f.number_field :rating, class: "form-control", min: 1, max: 5 %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :comment, class: "form-label" %>
+        <%= f.text_area :comment, class: "form-control" %>
+      </div>
+
+      <%= f.submit "Submit Review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <%= button_to "🗑️ Destroy this Book", @book, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  </div>
 </div>

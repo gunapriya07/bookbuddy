@@ -1,13 +1,12 @@
-<% content_for :title, "Editing review" %>
+<% content_for :title, "Editing Review" %>
 
-<h1>Editing review</h1>
+<div class="container mt-5">
+  <h2 class="mb-4 text-warning">✏️ Edit Review</h2>
 
-<%= render "form", review: @review %>
+  <%= render "form", review: @review %>
 
-<br>
-
-<div>
-  <%= link_to "Show this review", book_review_path(@book, @review) %> |
-  <%= link_to "Back to reviews", book_reviews_path(@book) %>
+  <div class="mt-4">
+    <%= link_to "👁️ Show this Review", book_review_path(@book, @review), class: "btn btn-outline-primary me-2" %>
+    <%= link_to "⬅️ Back to Reviews", book_reviews_path(@book), class: "btn btn-outline-dark" %>
+  </div>
 </div>
-

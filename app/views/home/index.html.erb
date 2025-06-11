@@ -1,8 +1,20 @@
-<div class="container">
-  <h1>📖 Welcome to Book Buddy</h1>
-  <p>Your personal library to track, review, and manage your books.</p>
+<div class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center text-md-start">
+      <h1 class="display-4 fw-bold text-primary mb-3">
+        📖 Welcome to Book Buddy
+      </h1>
+      <p class="lead text-secondary">
+        Organize, review, and keep track of your personal library with ease. Book Buddy makes managing your reading life simple and delightful.
+      </p>
 
-  <% if session[:user_id] %>
-    <%= link_to "Go to My Books", books_path, class: "btn" %>
-  <% end %>
+      <% if session[:user_id] %>
+        <%= link_to "📚 Go to My Books", books_path, class: "btn btn-primary btn-lg mt-3 shadow-sm" %>
+      <% end %>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="Bookshelf Illustration" class="img-fluid" style="max-height: 300px;">
+    </div>
+  </div>
 </div>

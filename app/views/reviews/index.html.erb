@@ -1,18 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Reviews" %>
 
-<h1>Reviews</h1>
+<div class="container mt-5">
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
 
-<div id="reviews">
-<% @reviews.each do |review| %>
-  <%= render review %>
-  <p>
-    <%= link_to "Show this review", book_review_path(@book, review) %>
-  </p>
-<% end %>
+  <h2 class="mb-4">📋 All Reviews</h2>
 
+  <div id="reviews">
+    <% if @reviews.any? %>
+      <% @reviews.each do |review| %>
+        <div class="mb-3">
+          <%= render review %>
+          <%= link_to "👁️ View Details", book_review_path(@book, review), class: "btn btn-sm btn-outline-secondary mt-1" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted">No reviews available.</p>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to "➕ New Review", new_book_review_path(@book), class: "btn btn-success" %>
+  </div>
 </div>
-
-<%= link_to "New review", new_book_review_path(@book) %>
-
