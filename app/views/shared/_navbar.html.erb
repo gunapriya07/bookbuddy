@@ -19,7 +19,7 @@
             <%= link_to "My Books", books_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure you want to logout?" }, class: "nav-link text-danger" %>
+             <%= button_to "Logout", logout_path, method: :delete, form: { style: "display:inline;" }, class: "btn btn-link nav-link text-danger" %>
           </li>
         <% else %>
           <li class="nav-item">
