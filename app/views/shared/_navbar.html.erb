@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-2">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold text-primary" href="/">📚 BookApp</a>
+    <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="/">
+      📚 <span class="ms-2">BookApp</span>
+    </a>
 
     <!-- Toggler for mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
@@ -10,23 +12,24 @@
 
     <!-- Navbar content -->
     <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-lg-center gap-2">
         <% if current_user %>
           <li class="nav-item">
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link px-3 text-dark" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My Books", books_path, class: "nav-link" %>
+            <%= link_to "My Books", books_path, class: "nav-link px-3 text-dark" %>
           </li>
           <li class="nav-item">
-             <%= button_to "Logout", logout_path, method: :delete, form: { style: "display:inline;" }, class: "btn btn-link nav-link text-danger" %>
+            <%= button_to "Logout", logout_path, method: :delete, form: { style: "display:inline;" },
+              class: "btn btn-outline-danger btn-sm ms-lg-2" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", login_path, class: "nav-link" %>
+            <%= link_to "Login", login_path, class: "nav-link px-3 text-dark" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign Up", signup_path, class: "nav-link btn btn-outline-primary ms-2 px-3" %>
+            <%= link_to "Sign Up", signup_path, class: "btn btn-primary btn-sm ms-lg-2 px-3" %>
           </li>
         <% end %>
       </ul>
