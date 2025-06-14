@@ -1,40 +1,431 @@
-<div class="container py-4">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
+<!-- Premium Dashboard with Embedded CSS -->
+<style>
+  /* Dashboard Container */
+  /* Dashboard Container */
+.dashboard-container {
+  background: linear-gradient(135deg, #e0f2ff 0%, #cce7ff 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
+}
 
-      <div class="card shadow-sm mb-4">
-        <div class="card-body">
-          <h2 class="card-title text-primary">Welcome, <%= @user.name %>!</h2>
-          <p class="lead">
-            <strong>Total Books Added:</strong> <span class="badge bg-info text-dark"><%= @total_books %></span>
-          </p>
+/* Welcome Card */
+.welcome-card {
+  background: linear-gradient(135deg, #0d6efd 0%, #3b82f6 100%);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 15px 35px rgba(13, 110, 253, 0.3);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.welcome-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(13, 110, 253, 0.4);
+}
+
+.welcome-card .card-body {
+  padding: 2.5rem;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.welcome-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+/* Stats Section */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.stat-item:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Reviews Card */
+.reviews-card {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.reviews-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.reviews-header {
+  background: linear-gradient(135deg, #0d6efd 0%, #60a5fa 100%);
+  padding: 1.5rem 2rem;
+  border-bottom: none;
+}
+
+.reviews-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reviews-body {
+  padding: 2rem;
+}
+
+/* Review Items */
+.review-item {
+  background: linear-gradient(135deg, #bfdbfe 0%, #60a5fa 100%);
+  border: none;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.review-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.review-item:last-child {
+  margin-bottom: 0;
+}
+
+.review-book-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.review-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.review-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-badge {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.star-display {
+  color: #ffd700;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.review-comment {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.review-date {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6c757d;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.empty-text {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Action Buttons */
+.action-buttons {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn-action {
+  background: linear-gradient(135deg, #0d6efd 0%, #3b82f6 100%);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+  margin: 0 0.5rem;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-secondary-action {
+  background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+  box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+}
+
+.btn-secondary-action:hover {
+  box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem 0;
+  }
+
+  .welcome-card .card-body {
+    padding: 2rem 1.5rem;
+  }
+
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .reviews-body {
+    padding: 1.5rem;
+  }
+
+  .review-item {
+    padding: 1.25rem;
+  }
+
+  .review-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Animation */
+.dashboard-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-card, .reviews-card {
+  animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-item {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+</style>
+
+<div class="dashboard-container">
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+
+        <!-- Welcome Card -->
+        <div class="welcome-card shadow-lg mb-5">
+          <div class="card-body">
+            <h1 class="welcome-title">
+              👋 Welcome back, <%= @user.name %>!
+            </h1>
+            <p class="welcome-subtitle">
+              Ready to discover your next great read?
+            </p>
+            
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number"><%= @total_books %></span>
+                <span class="stat-label">Total Books</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number"><%= @recent_reviews.count %></span>
+                <span class="stat-label">⭐ Recent Reviews</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number"><%= Date.current.strftime("%b") %></span>
+                <span class="stat-label">📅 Current Month</span>
+              </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <%= link_to "📖 Add New Book", new_book_path, class: "btn-action" %>
+              <%= link_to "📚 View All Books", books_path, class: "btn-action btn-secondary-action" %>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h4 class="card-title text-secondary">📖 Your Recent Reviews</h4>
-
-          <% if @recent_reviews.any? %>
-            <% @recent_reviews.each do |review| %>
-              <div class="border rounded p-3 mb-3 bg-light">
-                <h5><%= review.book.title %></h5>
-                <p>
-                  <strong>Rating:</strong>
-                  <span class="badge bg-success"><%= review.rating %>/5</span><br>
-                  <strong>Comment:</strong> <%= review.comment %><br>
-                  <small class="text-muted">
-                    <em>Reviewed on <%= review.created_at.strftime("%B %d, %Y") %></em>
-                  </small>
+        <!-- Reviews Card -->
+        <div class="reviews-card shadow-lg">
+          <div class="reviews-header">
+            <h2 class="reviews-title">
+              📖 Your Recent Reviews
+            </h2>
+          </div>
+          
+          <div class="reviews-body">
+            <% if @recent_reviews.any? %>
+              <% @recent_reviews.each do |review| %>
+                <div class="review-item">
+                  <h3 class="review-book-title">
+                    📕 <%= review.book.title %>
+                  </h3>
+                  
+                  <div class="review-meta">
+                    <div class="review-rating">
+                      <strong>Rating:</strong>
+                      <span class="rating-badge"><%= review.rating %>/5</span>
+                      <span class="star-display">
+                        <% review.rating.times do %>⭐<% end %>
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <% if review.comment.present? %>
+                    <div class="review-comment">
+                      <strong>💭 Your thoughts:</strong><br>
+                      "<%= review.comment %>"
+                    </div>
+                  <% end %>
+                  
+                  <div class="review-date">
+                    📅 Reviewed on <%= review.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="empty-state">
+                <div class="empty-icon">📚</div>
+                <h3 class="empty-title">No Reviews Yet</h3>
+                <p class="empty-text">
+                  Start your reading journey by adding and reviewing your first book!
                 </p>
+                <div class="action-buttons">
+                  <%= link_to "📖 Add Your First Book", new_book_path, class: "btn-action" %>
+                </div>
               </div>
             <% end %>
-          <% else %>
-            <p class="text-muted">You haven’t reviewed any books yet.</p>
-          <% end %>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </div>

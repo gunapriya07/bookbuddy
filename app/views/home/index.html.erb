@@ -1,20 +1,89 @@
-<div class="container py-5">
+<style>
+  .hero-section {
+    background: linear-gradient(135deg, #f8f9fa, #e3e9f7);
+    padding: 5rem 0;
+    border-radius: 0 0 40px 40px;
+  }
+
+  .hero-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #5f39e3; /* Match screenshot title */
+  }
+
+  .hero-subheading {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    padding: 12px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(to right, #6f42c1, #4f46e5);
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+    text-decoration: none;
+  }
+
+  .hero-btn:hover {
+    background: linear-gradient(to right, #5a32b3, #3e3ad0);
+  }
+
+  .pill-button {
+    background-color: white;
+    color: #4f46e5;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 10px 20px;
+    margin: 5px 10px 15px 0;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: none;
+  }
+
+  .pill-button i {
+    margin-right: 6px;
+  }
+
+  .book-img {
+    max-height: 320px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.15));
+  }
+</style>
+
+<div class="container hero-section">
   <div class="row align-items-center">
     <div class="col-md-6 text-center text-md-start">
-      <h1 class="display-4 fw-bold text-primary mb-3">
-        📖 Welcome to Book Buddy
+      <h1 class="hero-heading mb-3">
+        Welcome to <span class="d-block">Book Buddy</span>
       </h1>
-      <p class="lead text-secondary">
-        Organize, review, and keep track of your personal library with ease. Book Buddy makes managing your reading life simple and delightful.
+      <p class="hero-subheading">
+        Organize, review, and keep track of your personal library with ease.
+        Book Buddy makes managing your reading life simple and delightful.
       </p>
 
+      <!-- Pill buttons -->
+      <div class="mb-3">
+        <button class="pill-button"><i class="bi bi-book"></i> Track Reading</button>
+        <button class="pill-button"><i class="bi bi-journal-text"></i> Add Notes</button>
+        <button class="pill-button"><i class="bi bi-star-fill text-warning"></i> Rate Books</button>
+        <button class="pill-button"><i class="bi bi-bar-chart-line"></i> View Progress</button>
+      </div>
+
+      <!-- Main action button -->
       <% if session[:user_id] %>
-        <%= link_to "📚 Go to My Books", books_path, class: "btn btn-primary btn-lg mt-3 shadow-sm" %>
+        <%= link_to "Go to My Books →", books_path, class: "hero-btn" %>
       <% end %>
     </div>
 
     <div class="col-md-6 text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="Bookshelf Illustration" class="img-fluid" style="max-height: 300px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="Book illustration" class="img-fluid book-img">
     </div>
   </div>
 </div>

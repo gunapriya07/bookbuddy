@@ -1,10 +1,93 @@
-<div id="<%= dom_id book %>" class="card mb-4 shadow-sm">
-  <div class="card-body">
-    <h5 class="card-title text-primary"><strong><%= book.title %></strong></h5>
-    <h6 class="card-subtitle mb-2 text-muted">by <%= book.author %></h6>
+<style>
+  .custom-card {
+    border-radius: 12px;
+    border-top: 4px solid #4f46e5; /* purple-blue top border */
+    border: none;
+  }
 
-    <p class="mb-1"><strong>Genre:</strong> <%= book.genre %></p>
-    <p class="mb-1"><strong>Notes:</strong> <%= book.notes.presence || "N/A" %></p>
-    <p class="mb-0"><strong>User ID:</strong> <%= book.user_id %></p>
+  .note-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid #0d6efd;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .user-id-box {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+  }
+
+  .genre-pill {
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .action-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-edit {
+    background-color: #198754;
+    color: #fff;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 500;
+    border: none;
+  }
+
+  .btn-edit:hover {
+    background-color: #157347;
+  }
+
+  .btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 500;
+    border: none;
+  }
+
+  .btn-delete:hover {
+    background-color: #b02a37;
+  }
+</style>
+
+<div id="<%= dom_id book %>" class="card custom-card mb-4 shadow-sm">
+  <div class="card-body">
+    <h5 class="card-title fw-bold text-dark mb-1"><%= book.title %></h5>
+    <h6 class="card-subtitle text-muted fst-italic mb-4">by <%= book.author %></h6>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <p class="mb-0 fw-bold text-dark">Genre:</p>
+      <span class="genre-pill"><%= book.genre %></span>
+    </div>
+
+    <div class="note-box">
+      <p class="mb-0">
+        <strong class="d-block mb-1 text-dark">Notes:</strong>
+        <%= book.notes.presence || "N/A" %>
+      </p>
+    </div>
+
+    <div class="user-id-box">
+      <span><strong>User ID:</strong></span>
+      <span class="float-end"><%= book.user_id %></span>
+    </div>
+
+    <div class="action-buttons">
+      <%= link_to 'Edit', edit_book_path(book), class: "btn btn-edit" %>
+      <%= link_to 'Delete', book, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete" %>
+    </div>
   </div>
 </div>
