@@ -1,11 +1,11 @@
 <% content_for :title, "New Book" %>
 
 <div class="container mt-5">
-  <h2 class="mb-4 text-success">📘 Add New Book</h2>
+  <%# <h2 class="mb-4 text-success">📘 Add New Book</h2> %>
 
   <%= render "form", book: @book %>
 
   <div class="mt-4">
-    <%= link_to "⬅️ Back to Books", books_path, class: "btn btn-outline-dark" %>
+    <%= link_to "Back to Books", books_path, class: "btn btn-outline-dark" %>
   </div>
 </div>

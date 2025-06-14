@@ -1,11 +1,11 @@
 <% content_for :title, "New Review" %>
 
 <div class="container mt-5">
-  <h2 class="mb-4 text-success">📝 New Review</h2>
+  <h2 class="mb-4 text-success">New Review</h2>
 
   <%= render "form", review: @review %>
 
   <div class="mt-4">
-    <%= link_to "⬅️ Back to Reviews", book_reviews_path(@book), class: "btn btn-outline-dark" %>
+    <%= link_to "Back to Reviews", book_reviews_path(@book), class: "btn btn-outline-dark" %>
   </div>
 </div>
