@@ -16,5 +16,10 @@ module ActiveSupport
       assert_response :redirect
       follow_redirect!
     end
+
+    # Automatically stub KafkaProducer#publish in all tests
+    setup do
+      KafkaProducer.any_instance.stubs(:publish).returns(true)
+    end
   end
 end
