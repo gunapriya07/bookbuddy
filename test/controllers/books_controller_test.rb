@@ -1,4 +1,5 @@
 require "test_helper"
+require "mocha/minitest"
 
 class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -19,6 +20,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create book" do
+    KafkaProducer.any_instance.stubs(:publish).returns(true)
     assert_difference("Book.count") do
       post books_url, params: { book: { author: @book.author, genre: @book.genre, notes: @book.notes, title: @book.title, user_id: @book.user_id } }
     end
