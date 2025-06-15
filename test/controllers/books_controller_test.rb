@@ -3,8 +3,6 @@ require "mocha/minitest"
 
 class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    Minitest::Test.i_suck_and_my_tests_are_order_dependent!
-    KafkaProducer.any_instance.stubs(:publish).returns(true)
     @user = users(:one)
     @book = books(:one)
     sign_in_as(@user)
