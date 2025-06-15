@@ -75,6 +75,8 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
+      - name: Confirm mocha gem is installed
+        run: bundle info mocha
 
       - run: chmod +x bin/rails
 
