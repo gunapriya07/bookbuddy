@@ -27,6 +27,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
+        KafkaProducer.publish("book-events", "Book Created: #{@book.id} - #{@book.title}")
         format.html { redirect_to @book, notice: "Book was successfully created." }
         format.json { render :show, status: :created, location: @book }
       else
