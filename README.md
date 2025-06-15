@@ -66,12 +66,3 @@ BookBuddy is a personal book tracking app where users can register, log in, and 
 - Rating validation for reviews (1–5)
 
 ---
-
-## 📦 Setup Instructions
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/bookbuddy.git
-cd bookbuddy
-```
