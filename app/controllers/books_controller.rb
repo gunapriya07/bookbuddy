@@ -73,7 +73,7 @@ class BooksController < ApplicationController
 
     # Strong parameters
     def book_params
-      params.require(:book).permit(:title, :author, :genre, :notes)
+      params.require(:book).permit(:title, :author, :genre, :notes, :status)
     end
 
     # Require login

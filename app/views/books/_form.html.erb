@@ -30,10 +30,11 @@
     <%= form.text_area :notes, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :user_id, class: "form-label" %>
-    <%= form.text_field :user_id, class: "form-control" %>
-  </div>
+ <div class="field">
+  <%= form.label :status %>
+  <%= form.select :status, ["Reading", "Completed", "Wishlist"], {}, class: "form-control" %>
+</div>
+
 
   <div>
     <%= form.submit "Save Book", class: "btn btn-primary" %>
