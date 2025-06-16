@@ -33,7 +33,14 @@ It also integrates **Kafka** and **Docker** in a **CI/CD pipeline**, and sends a
 
 ## 📷 Screenshots
 
-> _Add screenshots of your app here (e.g., homepage, login screen, book form, etc.)_
+![Screenshot (130)](https://github.com/user-attachments/assets/4dd0f248-9aaf-4864-be53-96e6793f0836)
+![Screenshot (129)](https://github.com/user-attachments/assets/16641130-9235-4ff7-9812-15acd3c800b8) 
+![Screenshot (134)](https://github.com/user-attachments/assets/9ce6833b-e3e7-4923-89db-ff91ad254a19)
+![Screenshot (133)](https://github.com/user-attachments/assets/f955d304-b9d2-4a3b-8076-7b14dfa6aa25)
+![Screenshot (132)](https://github.com/user-attachments/assets/62439e91-39ef-4b72-9fe8-fef125851283)
+![Screenshot (131)](https://github.com/user-attachments/assets/836715f6-245c-4238-8d73-63fa7f1b1207)
+
+
 
 ---
 
