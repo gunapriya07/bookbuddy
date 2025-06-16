@@ -2,27 +2,36 @@
 
 <div class="container mt-5">
   <% if notice %>
-    <div class="alert alert-success">
+    <div class="alert alert-success shadow-sm">
       <%= notice %>
     </div>
   <% end %>
 
-  <h2 class="mb-4">All Reviews</h2>
+  <h2 class="mb-4 text-primary">📖 All Reviews</h2>
 
   <div id="reviews">
     <% if @reviews.any? %>
-      <% @reviews.each do |review| %>
-        <div class="mb-3">
-          <%= render review %>
-          <%= link_to "View Details", book_review_path(@book, review), class: "btn btn-sm btn-outline-secondary mt-1" %>
-        </div>
-      <% end %>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <% @reviews.each do |review| %>
+          <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+              <div class="card-body">
+                <h5 class="card-title text-success">Rating: <%= review.rating %> ⭐</h5>
+                <p class="card-text"><%= truncate(review.comment, length: 100) %></p>
+              </div>
+              <div class="card-footer bg-transparent border-0 text-end">
+                <%= link_to "View Details", book_review_path(@book, review), class: "btn btn-sm btn-outline-primary" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% else %>
       <p class="text-muted">No reviews available.</p>
     <% end %>
   </div>
 
-  <div class="mt-4">
-    <%= link_to "New Review", new_book_review_path(@book), class: "btn btn-success" %>
+  <div class="mt-5 text-center">
+    <%= link_to "New Review", new_book_review_path(@book), class: "btn btn-success px-4 py-2" %>
   </div>
 </div>

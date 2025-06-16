@@ -1,11 +1,15 @@
 <% content_for :title, "New Review" %>
 
-<div class="container mt-5">
-  <h2 class="mb-4 text-success">New Review</h2>
+<div class="container mt-5" style="max-width: 600px;">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h2 class="card-title mb-4 text-success text-center">📝 New Review</h2>
 
-  <%= render "form", review: @review %>
+      <%= render "form", review: @review %>
 
-  <div class="mt-4">
-    <%= link_to "Back to Reviews", book_reviews_path(@book), class: "btn btn-outline-dark" %>
+      <div class="text-center mt-4">
+        <%= link_to "← Back to Reviews", book_reviews_path(@book), class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
   </div>
 </div>

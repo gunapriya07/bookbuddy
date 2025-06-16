@@ -1,8 +1,13 @@
 <style>
   .custom-card {
+    border: 2px solid #cfe2ff; /* Light blue border */
     border-radius: 12px;
-    border-top: 4px solid #4f46e5; /* purple-blue top border */
-    border: none;
+    background-color: #ffffff;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .custom-card:hover {
+    transform: scale(1.01);
   }
 
   .note-box {
@@ -34,6 +39,7 @@
     margin-top: 1rem;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
   }
 
   .btn-edit {
@@ -76,11 +82,11 @@
     <div class="note-box">
       <p class="mb-0">
         <strong class="d-block mb-1 text-dark">Notes:</strong>
-        <%= book.notes.presence || "N/A" %>
+        <%= book.notes.presence || "NO REVIEWS" %>
       </p>
     </div>
 
-    <div class="user-id-box">
+    <div class="user-id-box mb-2">
       <span><strong>User ID:</strong></span>
       <span class="float-end"><%= book.user_id %></span>
     </div>

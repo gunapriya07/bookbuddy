@@ -1,13 +1,15 @@
-<div id="<%= dom_id review %>" class="card mb-3 shadow-sm">
+<div id="<%= dom_id review %>" class="card mb-4 shadow-sm border-0">
+  <div class="card-header bg-light d-flex justify-content-between align-items-center">
+    <span class="fw-bold text-primary">📚 Book ID: <%= review.book_id %></span>
+    <span class="badge bg-warning text-dark">⭐ <%= review.rating %>/5</span>
+  </div>
+
   <div class="card-body">
-    <h5 class="card-title">
-      ⭐ Rating: <%= review.rating %>/5
-    </h5>
-    <p class="card-text">
-      <strong>Comment:</strong> <%= review.comment %>
-    </p>
-    <p class="card-text text-muted">
-      <small>Book ID: <%= review.book_id %></small>
-    </p>
+    <h5 class="card-title text-dark">📝 Review</h5>
+    <p class="card-text"><%= review.comment %></p>
+  </div>
+
+  <div class="card-footer text-muted text-end">
+    <small>Review ID: <%= review.id %></small>
   </div>
 </div>
