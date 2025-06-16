@@ -41,7 +41,7 @@ It also integrates **Kafka** and **Docker** in a **CI/CD pipeline**, and sends a
 ![Screenshot (131)](https://github.com/user-attachments/assets/836715f6-245c-4238-8d73-63fa7f1b1207)
 
 
-
+LinkedIn POST(https://www.linkedin.com/posts/kommara-gunta-guna-priya-924b97297_rubyonrails-webdevelopment-opensource-activity-7340360505556942849-d2LN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEfmgWwB7OTmoWCYf_ytrYdI6M9ZJQLtGe8)
 ---
 
 ## 🎥 App Preview (Video)
