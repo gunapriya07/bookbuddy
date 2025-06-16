@@ -16,9 +16,15 @@
     <% @books.each do |book| %>
       <div class="col">
         <%= render book %>
-        <div class="mt-2">
-          <%= link_to "Show this Book", book, class: "btn btn-outline-secondary btn-sm" %>
-        </div>
+        <div class="mt-2 d-flex gap-2">
+           <%= link_to "Show this Book", book, class: "btn btn-outline-secondary btn-sm" %>
+
+           <%= button_to (book.favorite ? "★ Unfavorite" : "☆ Favorite"),
+           toggle_favorite_book_path(book),
+           method: :patch,
+          class: "btn btn-warning btn-sm" %>
+</div>
+
       </div>
     <% end %>
   </div>

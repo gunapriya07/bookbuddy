@@ -58,6 +58,11 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def toggle_favorite
+      @book = current_user.books.find(params[:id])
+      @book.update(favorite: !@book.favorite)
+      redirect_to books_path, notice: "Favorite status updated!"
+  end
 
   private
 
