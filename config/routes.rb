@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   get "dashboard/index"
   get "home/index"
   resources :books do
-     resources :reviews
+    resources :reviews
+    member do
+     patch :toggle_favorite
+    end
   end
 
   resources :users
