@@ -24,6 +24,8 @@
            method: :patch,
           class: "btn btn-warning btn-sm" %>
 </div>
+       <p><strong>Status:</strong> <%= book.status.presence || "Reading" %></p>
+
 
       </div>
     <% end %>
